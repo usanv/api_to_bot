@@ -61,7 +61,7 @@ async def on_shutdown(dp):
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     tasks = [
-        loop.create_task(uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True, workers=2)),
+        loop.create_task(uvicorn.run("main:app", reload=True, workers=2)),
         loop.create_task(dp.start_polling(bot, on_shutdown=on_shutdown))
     ]
     loop.run_until_complete(asyncio.gather(*tasks))
